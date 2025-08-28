@@ -1,4 +1,4 @@
-# gnss-denied-ins
+# modular-ins
 Implementation of externally aiding a tactical grade INS with a Dual-Antenna GNSS receiver and RTK corrections via a one-shot launch file.
 <br/>
 ## Bill of Materials:

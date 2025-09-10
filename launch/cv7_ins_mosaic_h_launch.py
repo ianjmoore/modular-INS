@@ -9,11 +9,11 @@ from launch_ros.actions import Node
 
 # Path to the launch files and directories that we will use
 _MICROSTRAIN_LAUNCH_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('microstrain_inertial_driver'), 'launch', 'microstrain_launch.py')
-_CV7_INS_PARAMS_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config', 'cv7_ins', 'cv7_ins_mosaic_h.yml')
-_RVIZ_DISPLAY_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config', 'cv7_ins', 'display.rviz')
+_CV7_INS_PARAMS_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config', 'cv7_ins_mosaic_h.yml')
+_RVIZ_DISPLAY_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config', 'display.rviz')
 
 _CONFIG_DIRECTORY = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config')
-_SEPT_CONFIG_FILE = os.path.join(_CONFIG_DIRECTORY, 'mosaic_h.yaml') #TODO check if needed
+_SEPT_CONFIG_FILE = os.path.join(_CONFIG_DIRECTORY, 'mosaic_h.yml') #TODO check if needed
 
 def generate_launch_description():
   return LaunchDescription([
@@ -86,3 +86,4 @@ def generate_launch_description():
       ]
     ),
   ])
+

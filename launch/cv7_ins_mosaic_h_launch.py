@@ -27,8 +27,8 @@ def generate_launch_description():
         'configure': 'true',
         'activate': 'true',
         'params_file': _CV7_INS_PARAMS_FILE,
-        'namespace': 'cv7_ins', #need to verify
-	        'debug': 'true',
+        'namespace': 'modular_ins', #need to verify
+	        'debug': 'false',
       }.items()
     ),
     
@@ -38,9 +38,10 @@ def generate_launch_description():
       executable='septentrio_gnss_driver_node',
       output='screen',
       parameters=[_SEPT_CONFIG_FILE],
+      namespace='modular_ins',
       remappings=[
-        ('/navsatfix','cv7_ins/ext/llh_position'),
-        ('/twist','cv7_ins/ext/velocity_enu')
+        ('/navsatfix','modular_ins/ext/llh_position'),
+        ('/twist','modular_ins/ext/velocity_enu')
       ]
     ),
 

@@ -12,7 +12,7 @@ Implementation of an externally aided tactical grade INS with Dual-Antenna GNSS 
 - 2x L1/L2 or Full Band GNSS Antennas
 - [SensorCloudRTK](https://rtkapp.sensorcloud.com/) API
 #### Compute:
-- Linux machine running Ubuntu 18.04 or later
+- Linux machine running Ubuntu 20.04 or later
 ### Software:
 - [microstrain_inertial](https://github.com/LORD-MicroStrain/microstrain_inertial/tree/ros2) ROS 2 driver
 - [septentrio_gnss_driver](https://github.com/septentrio-gnss/septentrio_gnss_driver) ROS 2 driver

@@ -117,8 +117,8 @@ modular_ins/septentrio_gnss:
   ros__parameters:
     # device: tcp://192.168.3.1:28784
     # device: serial:/dev/ttyACM1 
-    device: serial:/dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if04
-    serial: rx_serial_port:/dev/ttyACM1
+    device: serial:/dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if02
+    # serial: rx_serial_port:/dev/ttyACM2
     # serial:
       # baudrate: 115200
       # hw_flow_control: "off"
@@ -214,26 +214,26 @@ modular_ins/septentrio_gnss:
       # For both GNSS and INS Rxs
       auto_publish: false
       publish_only_valid: false
-      navsatfix: false
-      gpsfix: true
+      navsatfix: true
+      gpsfix: false
       gpgga: false
       gprmc: false
       gpst: false
       measepoch: false
       pvtcartesian: false
-      pvtgeodetic: true
+      pvtgeodetic: false
       basevectorcart: false
       basevectorgeod: false
       poscovcartesian: false
-      poscovgeodetic: true
+      poscovgeodetic: false
       velcovcartesian: false
-      velcovgeodetic: true
-      atteuler: true
-      attcoveuler: true
-      pose: false
-      twist: false
+      velcovgeodetic: false
+      atteuler: false
+      attcoveuler: false
+      pose: true
+      twist: true
       diagnostics: false
-      aimplusstatus: true
+      aimplusstatus: false
       galauthstatus: false
       # For GNSS Rx only
       gpgsa: false

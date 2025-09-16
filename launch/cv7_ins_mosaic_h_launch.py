@@ -41,7 +41,8 @@ def generate_launch_description():
       namespace='modular_ins',
       remappings=[
         ('/navsatfix','modular_ins/ext/llh_position'),
-        ('/twist','modular_ins/ext/velocity_enu')
+        ('/twist','modular_ins/ext/velocity_enu'),
+        ('/pose','modular_ins/ext/heading_enu')
       ]
     ),
 

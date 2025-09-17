@@ -80,6 +80,8 @@ modular_ins/microstrain_inertial_driver:
     filter_llh_position_data_rate          : 50
     filter_odometry_earth_data_rate        : 50
     filter_odometry_map_data_rate          : 50
+    mip_filter_status_data_rate            : 1  # Rate of mip/filter/status topic
+
 
     # Subscribe to external aiding messages.
     # For this example we are subscribing to external GNSS position and velocity
@@ -115,20 +117,25 @@ modular_ins/microstrain_inertial_driver:
 
 modular_ins/septentrio_gnss:
   ros__parameters:
-    # device: tcp://192.168.3.1:28784
-    # device: serial:/dev/ttyACM1 
+    # device: tcp://192.168.3.1:28784 ## Unable to connect via TCP
+    # device: serial:/dev/ttyACM1
     device: serial:/dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if02
-    # serial: rx_serial_port:/dev/ttyACM2
     # serial:
-      # baudrate: 115200
-      # hw_flow_control: "off"
+    # rx_serial_port: /dev/ttyACM1
+    # # serial:
+    # baudrate: 115200
+    # hw_flow_control: "off"
+
+
+    serial:
+      baudrate: 115200
+      # rx_serial_port: ttyAMC2
+      rx_serial_port: /dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if02
+      hw_flow_control: "off"
+
 
     configure_rx: true
 
-    osnma:
-      mode: "off"
-      ntp_server: ""
-      keep_open: true
 
     frame_id: gnss
 
@@ -146,7 +153,7 @@ modular_ins/septentrio_gnss:
 
     insert_local_frame: false
 
-    get_spatial_config_from_tf: false
+    get_spatial_config_from_tf: false #TODO: change to true once tf is established
 
     lock_utm_zone: true
 
@@ -178,9 +185,9 @@ modular_ins/septentrio_gnss:
 
     # time
     use_gnss_time: false
-    ntp_server: true
+    ntp_server: false
     ptp_server_clock: false
-    latency_compensation: true
+    latency_compensation: false
 
     # RTK
     rtk_settings:  
@@ -210,34 +217,86 @@ modular_ins/septentrio_gnss:
         send_gga: "auto"
         keep_open: true
 
+    # Minimum topics required for cv7_ins subscribers:
+
+    # publish:
+    #   # For both GNSS and INS Rxs
+    #   auto_publish: false
+    #   publish_only_valid: false
+    #   navsatfix: true
+    #   gpsfix: false
+    #   gpgga: false
+    #   gprmc: false
+    #   gpst: false
+    #   measepoch: false
+    #   pvtcartesian: false
+    #   pvtgeodetic: false
+    #   basevectorcart: false
+    #   basevectorgeod: false
+    #   poscovcartesian: false
+    #   poscovgeodetic: false
+    #   velcovcartesian: false
+    #   velcovgeodetic: false
+    #   atteuler: false
+    #   attcoveuler: false
+    #   pose: true
+    #   twist: true
+    #   diagnostics: false
+    #   aimplusstatus: false
+    #   galauthstatus: false
+    #   # For GNSS Rx only
+    #   gpgsa: false
+    #   gpgsv: false
+
+
+    # Default Septentrio publisher config:
+
     publish:
-      # For both GNSS and INS Rxs
+      # For both GNSS and INS Rxs 
       auto_publish: false
       publish_only_valid: false
-      navsatfix: true
-      gpsfix: false
+      navsatfix: false
+      gpsfix: true
       gpgga: false
       gprmc: false
       gpst: false
       measepoch: false
       pvtcartesian: false
-      pvtgeodetic: false
+      pvtgeodetic: true
       basevectorcart: false
       basevectorgeod: false
       poscovcartesian: false
-      poscovgeodetic: false
+      poscovgeodetic: true
       velcovcartesian: false
       velcovgeodetic: false
-      atteuler: false
-      attcoveuler: false
-      pose: true
-      twist: true
+      atteuler: true
+      attcoveuler: true
+      pose: false
+      twist: false
       diagnostics: false
-      aimplusstatus: false
+      aimplusstatus: true
       galauthstatus: false
       # For GNSS Rx only
       gpgsa: false
       gpgsv: false
+      # For INS Rx only
+      insnavcart: false
+      insnavgeod: false
+      extsensormeas: false
+      imusetup: false
+      velsensorsetup: false
+      exteventinsnavcart: false
+      exteventinsnavgeod: false
+      imu: false
+      localization: false
+      tf: false    
+      localization_ecef: false
+      tf_ecef: false
+
+
+
+
+
 
     # logger
     activate_debug_log: true
